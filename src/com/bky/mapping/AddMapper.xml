@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bky.dao.AddMapper" >
+  <resultMap id="BaseResultMap" type="com.bky.model.Add" >
+    <id column="id" property="id" />
+    <result column="name" property="name"  />
+    <result column="age" property="age"  />
+  </resultMap>
+ 
+ <!--   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tadd
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>-->
+  <insert id="insert" parameterType="com.bky.model.Add" >
+    insert into t_user ( name, age
+      )
+    values ( #{name}, #{age}
+      )
+  </insert>
+  <!--  
+  <insert id="insertSelective" parameterType="com.bky.model.Add" >
+    insert into tadd
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="tname != null" >
+        tname,
+      </if>
+      <if test="tpwd != null" >
+        tpwd,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="tname != null" >
+        #{tname,jdbcType=VARCHAR},
+      </if>
+      <if test="tpwd != null" >
+        #{tpwd,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bky.model.Add" >
+    update tadd
+    <set >
+      <if test="tname != null" >
+        tname = #{tname,jdbcType=VARCHAR},
+      </if>
+      <if test="tpwd != null" >
+        tpwd = #{tpwd,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bky.model.Add" >
+    update tadd
+    set tname = #{tname,jdbcType=VARCHAR},
+      tpwd = #{tpwd,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  -->
+  <select id="getAll" resultMap="BaseResultMap">
+  	SELECT * FROM t_user
+  </select>
+  
+</mapper>
